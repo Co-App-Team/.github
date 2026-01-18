@@ -4,7 +4,7 @@
 
 To keep things clean and separate, we have split Co-App into 3 repositories:
 - [Front-end React app](https://github.com/Co-App-Team/frontend)
-- [Back-end Sprint Boot app](https://github.com/Co-App-Team/backend) 
+- [Back-end Spring Boot app](https://github.com/Co-App-Team/backend) 
 - [Documentation repository](https://github.com/Co-App-Team/.github)
 
 ## Team members
