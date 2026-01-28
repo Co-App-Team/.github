@@ -15,6 +15,17 @@ To keep things clean and separate, we have split Co-App into 3 repositories:
 - [Back-end Spring Boot app](https://github.com/Co-App-Team/backend) 
 - [Documentation repository](https://github.com/Co-App-Team/.github)
 
+
+## Issues management
+
+- We keep track of user stories and features in [Issue of this repository](https://github.com/Co-App-Team/.github/issues)
+
+
+- Each user story will keep track of frontend and backend dev tasks with a link reference to [Issue in the backend repository](https://github.com/Co-App-Team/backend) and [.](https://github.com/Co-App-Team/frontend)
+
+[Example Feature issue.](https://github.com/Co-App-Team/.github/issues/2)
+
+[Example User Story.](https://github.com/Co-App-Team/.github/issues/3)
 ## Team members
 
 - Aidan McLeod
