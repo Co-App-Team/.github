@@ -124,7 +124,7 @@ Below we have our functional features and user stories. We have
 	    - Given that I’m on the applications screen and have previously selected statuses to filter by, when I click on a “filter by status” button, then I will be shown the list of statuses again
 	    - Given that I see the list of statuses and have previously selected statuses to filter by, when I click on one or more of the statuses that I have previously selected, then I have de-selected those statuses as filters.
 - Sort by Date: As a co-op student, I want to sort my applications by "Date Applied" so I can identify applications I submitted weeks ago that I haven't heard back from and decide whether to move on.
-	    - <u>Acceptance criteria:</u>
+	- <u>Acceptance criteria:</u>
 	    - Given that I’m on the applications screen, when I click on an “up arrow” button next to the date applied field, then I will be shown the list of applications in order of the date ascending
 	    - Given that I’m on the applications screen, when I click on an “down arrow” button next to the date applied field, then I will be shown the list of applications in order of the date descending
 	    - Given that I’m on the applications screen and have previously selected one of the up or down arrows, when I clicked on the arrow that I selected, then the list will be returned to its “default” ordering
