@@ -2,20 +2,20 @@
 
 ### Project Summary and vision 
 
-<u>Summary</u>
+<u>**Summary**</u>
 
 CoApp is a co-op application management platform, a comprehensive web application designed to streamline the student experience of the co-op job search. This platform uses React, Spring Boot, and MongoDB to address the most common challenges faced by students throughout their co-op job searches and provides an all-in-one space to manage job applications, interview preparations, and researching potential employers. 
 
 This application takes all the essential co-op organizational tools and puts them in one user-friendly interface. Students can track their job applications from the start to their outcome, maintain interview schedules for these applications with a calendar view, and access a communal “rate my co-op” review board to see what others think about their work terms. This app gets rid of the need for multiple scattered spreadsheets, tracking apps, or unorganized notes.
 
-<u>Vision</u>
+<u>**Vision**</u>
 
 Our vision with CoApp is to turn the co-op job search from a stressful, disorganized experience into something supportive and structured. As co-op students, we know very well that students juggle dozens of applications at once, trying to balance academic and personal responsibilities along the way. With all of this in mind, it's easy to feel overwhelmed or even miss deadlines and opportunities because of how daunting the job search itself can be. CoApp will hopefully help support students as they take more control over their careers by giving them the tools they need to stay organized throughout this process and ease the stress of keeping track of everything co-op related. 
 
 Beyond just organization, we envision building a communal aspect into this app where students can share knowledge and experiences they gained throughout their work terms, and give their opinions on employers as they navigate their co-op journey. Together, students will be able to make more informed decisions about their co-op terms and applications by using the opinions and experiences of their peers. Usually, this information for students is limited to their immediate network. Now, they can see the thoughts of all the co-op students before them.
 
 
-<u>Stakeholders</u>
+<u>**Stakeholders**</u>
 
 Co-op Students:
 Students can prepare for their upcoming work term by creating an account to track all their job applications. They can also log their interviews, application status, and see everything in one calendar view to avoid scheduling conflicts. After interviews, they can save their questions and practice them later on for future opportunities with other companies. They can also read reviews on companies to prepare themselves for how they will strategize their applications. 
@@ -205,32 +205,32 @@ Below we have our functional features and user stories. We have
 
 7. Personal Interview Question Bank
 - Co-op students find practicing for interviews very challenging. So, they need a space to practice technical and behavioural questions that were asked or that they found elsewhere.
+- Priority: Low
+- Cost: 2 Days
 - Log Question: As a student, I want to log specific technical questions I was asked after an interview so I don't forget them and can study them later.
 - Practice existing questions: As a student, I want to go through the practice questions in a randomized order.
 - Tag by Topic: As a user, I want to tag questions by topic so I can filter my list and study specific categories that I struggle with.
-- Priority: Low
-- Cost: 2 Days
-
 
 8. Documents for Jobs
+- Priority: Low
+- Cost: 2 Days
 - Upload Targeted Resume
 - Link Cover Letter
 - Download Uploaded Stuff
-- Priority: Low
-- Cost: 2 Days
 
 9. Application Statistics Dashboard
-- Status Distribution Chart
-- Total Count Metrics
 - Priority: Low
 - Cost: 2 Days
+- Status Distribution Chart
+- Total Count Metrics
+
 
 10. Peer Document Review
+- Priority: Low
+- Cost: 4 Days
 - Request Critique
 - Leave Comments
 - Resolve Feedback
-- Priority: Low
-- Cost: 4 Days
 
 
 ### Technologies:
