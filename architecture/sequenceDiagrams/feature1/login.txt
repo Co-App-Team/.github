@@ -1,0 +1,17 @@
+title Login
+
+actor User
+participant Log-in page
+participant API
+
+User->Log-in page:Enter username
+User->Log-in page:Enter Password
+User->Log-in page:Click "Log in"
+
+parallel
+Log-in page-->API: POST /api/login
+Log-in page->User: Show loading spinner
+parallel off
+Log-in page<--API:/api/login OK (Set auth cookie)
+
+Log-in page->User: Redirect to app
