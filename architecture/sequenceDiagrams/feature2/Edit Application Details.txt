@@ -1,0 +1,26 @@
+title Job Applications (Edit Application Details)
+
+actor User
+
+User->Job Applications Page:Click the "edit" button \n within the application \n that is to be edited
+
+Application Form -> User: Display the form with all fields prefilled in \n with their current values
+
+User -> Application Form: Update at least one of the fields \n by clicking the field and entering  value
+
+
+User -> Application Form: Click "Submit"
+
+Application Form --> API: PUT /api/application
+
+Application Form -> User: Display loading spinner
+
+API --> Application Form: /api/application OK
+
+Application Form -> User: Hide loading spinner
+
+User -> Job Applications Page: Redirect to main page
+
+Job Applications Page -> User: Show user their existing job applications,\n including the recently edited application with \n its updated values
+
+

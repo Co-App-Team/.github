@@ -1,0 +1,30 @@
+title Job Applications (Delete Entry)
+
+actor User
+
+User->Job Applications Page:Click the "trash" button \n beside the application \n that is to be deleted
+
+Warning Form-> User: Shows a message asking the user \n to confirm deletion
+
+User -> Warning Form: Click "Confirm Delete" 
+
+
+Warning Form --> API: DELETE /api/application
+
+Warning Form -> User: Display loading spinner
+
+API --> Warning Form: /api/application OK
+
+Warning Form -> User: Hide loading spinner
+
+User -> Job Applications Page : Redirect to main page 
+
+Job Applications Page -> User: Show user their existing job applications, \n excluding the recently deleted job application
+
+
+
+
+
+
+
+

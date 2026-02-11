@@ -1,0 +1,36 @@
+title Job Applications (Log New Application)
+
+actor User
+
+User->Job Applications Page:Click "Add New Application"
+
+User -> Application Form: Enter job title
+
+User-> Application Form: Enter company name
+
+User -> Application Form: Enter deadline date
+
+User-> Application Form: Enter posting link
+
+User -> Application Form: Click "Submit"
+
+
+Application Form --> API: POST /api/application
+
+Application Form -> User: Display loading spinner
+
+API --> Application Form: /api/application CREATED
+
+Application Form -> User: Hide loading spinner
+
+User -> Job Applications Page : Redirect to main page 
+
+Job Applications Page -> User: Show user their new and \n existing job applications
+
+
+
+
+
+
+
+

@@ -1,0 +1,19 @@
+title Job Applications (Update Status)
+
+actor User
+
+User->Job Applications Page:Click the application status dropdown
+
+User->Job Applications Page:Choose a new status from the dropdown
+
+Job Applications Page --> API: PUT /api/application
+
+Job Applications Page -> User: Display loading spinner
+
+API --> Job Applications Page:/api/application OK 
+
+Job Applications Page -> User: Hide loading spinner
+
+Job Applications Page -> User: Show user their existing job applications, \n including the recently edited application \n with its updated status
+
+
