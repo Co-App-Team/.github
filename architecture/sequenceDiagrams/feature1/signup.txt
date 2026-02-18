@@ -1,0 +1,33 @@
+title Sign up
+
+actor User
+participant Sign up page
+participant Email confirmation page
+participant API
+
+User->Sign up page:Enter first name
+User->Sign up page:Enter last name
+User->Sign up page:Enter username
+User->Sign up page:Enter Password
+User->Sign up page:Click "Create Account"
+
+Sign up page->User: Show loading spinner
+
+Sign up page-->API: POST /api/auth/register
+Sign up page<--API:/api/auth/register OK
+
+Sign up page->User: Redirect to email confirmation
+
+User->Email confirmation page: Enter email confirmation code
+
+Email confirmation page->User: Show loading spinner
+
+Email confirmation page-->API: PATCH /api/auth/verify-email
+
+Email confirmation page<--API: /api/auth/verify-email OK
+
+Email confirmation page-->API: POST /api/auth/login
+
+Email confirmation page<--API: /api/auth/login OK
+
+Email confirmation page->User: Redirect to home page

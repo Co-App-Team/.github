@@ -10,7 +10,7 @@ User->Log-in page:Click "Log in"
 
 Log-in page->User: Show loading spinner
 
-Log-in page-->API: POST /api/login
-Log-in page<--API:/api/login OK (Set auth cookie)
+Log-in page-->API: POST /api/auth/login
+Log-in page<--API:/api/auth/login OK (Set auth cookie)
 
 Log-in page->User: Redirect to app
