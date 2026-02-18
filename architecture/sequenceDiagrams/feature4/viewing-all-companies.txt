@@ -1,0 +1,10 @@
+title Viewing all companies on Rate My Co-op Screen
+
+actor User
+participant Company list
+participant API
+
+Company list-->API: GET /api/companies
+Company list->User:Shows user loading spinner
+API-->Company list: GET /api/companies responds\nwith list of all companies.
+Company list->User:Shows user the current company list (all companies)
