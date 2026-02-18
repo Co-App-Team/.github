@@ -19,5 +19,5 @@ User<-Individual Company Modal: Displays a confirmation "Are you \nsure you want
 User->Individual Company Modal: Clicks "Delete"
 Individual Company Modal-->API: DELETE /api/companies/{companyId}/reviews/{reviewId} \nwith review ID in path
 User<-Individual Company Modal: Shows a loading spinner
-Individual Company Modal-->API: DELETE /api/companies/{companyId}/reviews/{reviewId} \nresponds with success
+Individual Company Modal<--API: DELETE /api/companies/{companyId}/reviews/{reviewId} \nresponds with success
 User<-Individual Company Modal: Replaces spinner with "successfully deleted" message
