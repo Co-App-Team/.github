@@ -15,7 +15,7 @@ Individual Company Modal->User: Hides the text field input
 User->Individual Company Modal: Clicks on "write a review" button
 Individual Company Modal->User: Shows a text field input
 User->Individual Company Modal: Types in the text field input, and clicks "submit"
-Individual Company Modal-->API: /api/companies/{companyId}/reviews \nwith a payload of the user's text input
+Individual Company Modal-->API: POST /api/companies/{companyId}/reviews \nwith a payload of the user's text input
 User<-Individual Company Modal: Shows a loading spinner
-Individual Company Modal<--API: /api/companies/{companyId}/reviews \nresponds with success
+Individual Company Modal<--API: POST /api/companies/{companyId}/reviews \nresponds with success
 User<-Individual Company Modal: Replaces spinner with "success" message
