@@ -25,7 +25,6 @@ projects:
             repo: https://github.com/Co-App-Team/frontend
             branch: develop
             buildCommand: npm run build
-            publishPath: dist
             envVars:
               - key: VITE_API_URL
                 fromService:
@@ -56,7 +55,6 @@ projects:
             repo: https://github.com/Co-App-Team/frontend
             branch: main
             buildCommand: npm run build
-            publishPath: dist
             envVars:
               - key: VITE_API_URL
                 fromService:
