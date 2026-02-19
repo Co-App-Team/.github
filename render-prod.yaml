@@ -1,0 +1,28 @@
+version: "1"
+services:
+  - type: web
+    name: coapp-backend
+    runtime: docker
+    repo: https://github.com/Co-App-Team/backend
+    branch: main
+    plan: free
+    envVars:
+      - key: JWT_SECRET_KEY
+        sync: false
+      - key: SPRING_DATA_MONGODB_URI
+        sync: false
+      - key: NO_REPLY_EMAIL_PASSWORD
+        sync: false
+
+  - type: web
+    name: coapp
+    runtime: static
+    repo: https://github.com/Co-App-Team/frontend
+    branch: main
+    buildCommand: npm run build
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: coapp-backend-dev
+          property: host
