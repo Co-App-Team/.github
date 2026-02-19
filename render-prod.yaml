@@ -15,7 +15,7 @@ services:
         sync: false
 
   - type: web
-    name: coapp
+    name: coapp-suite
     runtime: static
     repo: https://github.com/Co-App-Team/frontend
     branch: main
