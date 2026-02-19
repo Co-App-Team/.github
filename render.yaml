@@ -9,7 +9,7 @@ projects:
             name: coapp-backend-dev
             runtime: docker
             repo: https://github.com/Co-App-Team/backend
-            branch: develop
+            branch: dev
             plan: free
             envVars:
               - key: JWT_SECRET_KEY
