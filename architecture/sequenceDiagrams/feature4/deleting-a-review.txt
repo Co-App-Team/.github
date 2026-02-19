@@ -4,6 +4,8 @@ actor User
 participant Company list
 participant Individual Company Modal
 participant API
+participant Service
+participant MongoDB
 
 Company list->User:Shows user the \ncurrent company list (all companies)
 User->Company list: Clicks on a single company
@@ -19,5 +21,10 @@ User<-Individual Company Modal: Displays a confirmation "Are you \nsure you want
 User->Individual Company Modal: Clicks "Delete"
 Individual Company Modal-->API: DELETE /api/companies/{companyId}/reviews/{reviewId} \nwith review ID in path
 User<-Individual Company Modal: Shows a loading spinner
+API-->Service: ReviewService validates \nrequest to delete review
+Service-->MongoDB: send details to database
+MongoDB-->MongoDB: delete company review \ninformation from the database
+MongoDB-->Service: send success response
+Service-->API: send success response
 Individual Company Modal<--API: DELETE /api/companies/{companyId}/reviews/{reviewId} \nresponds with success
 User<-Individual Company Modal: Replaces spinner with "successfully deleted" message

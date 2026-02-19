@@ -4,11 +4,17 @@ actor User
 participant Nav Bar
 participant Company list
 participant API
+participant Service
+participant MongoDB
 
-Nav Bar -> User: Displays "Rate my Co-op" \nNavigation Item 
-User -> Nav Bar: Clicks on "Rate my Co-op" \nNavigation Item 
+Nav Bar -> User: Displays "Rate my Co-op" \nNavigation Item
+User -> Nav Bar: Clicks on "Rate my Co-op" \nNavigation Item
 Company list->User: Displays a "Company List" view
 Company list-->API: GET /api/companies
 Company list->User:Shows user loading spinner
+API-->Service: Send request details to the backend.\nCompany Service processes request
+Service-->MongoDB: send request to database
+MongoDB-->Service: send success response\nwith list of all companies
+Service-->API: send success response\nwith list of allcompanies
 API-->Company list: GET /api/companies responds\nwith list of all companies.
 Company list->User:Shows user the current company list (all companies)

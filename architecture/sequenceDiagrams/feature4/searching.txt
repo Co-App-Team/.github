@@ -4,9 +4,15 @@ actor User
 participant Search bar
 participant Company list
 participant API
+participant Service
+participant MongoDB
 
 Company list-->API: GET /api/companies
 Company list->User:Shows user loading spinner
+API-->Service: Send request details to the backend.\nCompany Service processes request
+Service-->MongoDB: send request to database
+MongoDB-->Service: send success response\nwith list of companies
+Service-->API: send success response\nwith list of companies
 API-->Company list: GET /api/companies responds\nwith list of all companies.
 Company list->User:Shows user the current company list (all companies)
 User->Search bar:Clicks on search bar

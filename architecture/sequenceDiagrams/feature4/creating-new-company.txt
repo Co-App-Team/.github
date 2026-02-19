@@ -4,9 +4,11 @@ actor User
 participant Nav Bar
 participant New Company Modal
 participant API
+participant Service
+participant MongoDB
 
-Nav Bar -> User: Displays "Rate my Co-op" \nNavigation Item 
-User -> Nav Bar: Clicks on "Rate my Co-op" \nNavigation Item 
+Nav Bar -> User: Displays "Rate my Co-op" \nNavigation Item
+User -> Nav Bar: Clicks on "Rate my Co-op" \nNavigation Item
 User->New Company Modal: Clicks on "Add new company" button
 New Company Modal->User: Shows "add new company" modal
 New Company Modal<-User: Clicks cancel
@@ -14,7 +16,12 @@ New Company Modal->User: Hides "add new company" modal
 User->New Company Modal: Clicks on "Add new company" button
 New Company Modal->User: Shows "add new company" modal
 User->New Company Modal: Inputs Company Name, location,\nand website into the fields
-New Company Modal-->API: POST /api/companies/{companyId}/reviews \nwith a payload of the user's text input
+New Company Modal-->API: POST /api/companies/{companyId} \nwith a payload of the user's text input
 User<-New Company Modal: Shows a loading spinner
-New Company Modal<--API: POST /api/companies/{companyId}/reviews \nresponds with success
+API-->Service: Send company details to backend.\nCompanyService validates information.
+Service-->MongoDB: send details to database
+MongoDB-->MongoDB: store company information
+MongoDB-->Service: send success response
+Service-->API: send success response
+New Company Modal<--API: POST /api/companies/{companyId} \nresponds with success
 User<-New Company Modal: Replaces spinner with "success" message
