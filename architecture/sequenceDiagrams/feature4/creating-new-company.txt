@@ -1,0 +1,20 @@
+title Creating a company for the Rate My Co-op Screen
+
+actor User
+participant Nav Bar
+participant New Company Modal
+participant API
+
+Nav Bar -> User: Displays "Rate my Co-op" \nNavigation Item 
+User -> Nav Bar: Clicks on "Rate my Co-op" \nNavigation Item 
+User->New Company Modal: Clicks on "Add new company" button
+New Company Modal->User: Shows "add new company" modal
+New Company Modal<-User: Clicks cancel
+New Company Modal->User: Hides "add new company" modal
+User->New Company Modal: Clicks on "Add new company" button
+New Company Modal->User: Shows "add new company" modal
+User->New Company Modal: Inputs Company Name, location,\nand website into the fields
+New Company Modal-->API: POST /api/companies/{companyId}/reviews \nwith a payload of the user's text input
+User<-New Company Modal: Shows a loading spinner
+New Company Modal<--API: POST /api/companies/{companyId}/reviews \nresponds with success
+User<-New Company Modal: Replaces spinner with "success" message

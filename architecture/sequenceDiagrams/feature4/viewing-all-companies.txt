@@ -1,0 +1,14 @@
+title Viewing all companies on Rate My Co-op Screen
+
+actor User
+participant Nav Bar
+participant Company list
+participant API
+
+Nav Bar -> User: Displays "Rate my Co-op" \nNavigation Item 
+User -> Nav Bar: Clicks on "Rate my Co-op" \nNavigation Item 
+Company list->User: Displays a "Company List" view
+Company list-->API: GET /api/companies
+Company list->User:Shows user loading spinner
+API-->Company list: GET /api/companies responds\nwith list of all companies.
+Company list->User:Shows user the current company list (all companies)

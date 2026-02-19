@@ -1,0 +1,24 @@
+title Searching for Companies on Rate My Co-op Screen
+
+actor User
+participant Search bar
+participant Company list
+participant API
+
+Company list-->API: GET /api/companies
+Company list->User:Shows user loading spinner
+API-->Company list: GET /api/companies responds\nwith list of all companies.
+Company list->User:Shows user the current company list (all companies)
+User->Search bar:Clicks on search bar
+User->Search bar:Types a character in search bar
+Search bar->Company list:Updates the list to show\ncompanies that start with \n the text in the search bar
+Company list->User:Shows user the current company list \n(companies that match current text in search bar)
+User->Search bar:Types a character in search bar
+Search bar->Company list:Updates the list to show\ncompanies that start with\nthe text in the search bar
+Company list->User:Shows user the current company list \n(companies that match current text in search bar)
+User->Search bar:Deletes a character in search bar
+Search bar->Company list:Updates the list to show\n companies that start with \n the text in the search bar
+Company list->User:Shows user the current company list \n(companies that match current text in search bar)
+User->Search bar:Deletes a character in search bar
+Search bar->Company list:Updates the list to show\ncompanies that start with\nthe text in the search bar.\n\nSince the search bar is now\nempty, then all companies\nare shown to the user.
+Company list->User:Shows user the current company list \n(all companies)

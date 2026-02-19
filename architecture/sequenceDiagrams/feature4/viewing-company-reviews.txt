@@ -1,0 +1,24 @@
+title Viewing a comapny's reviews on Rate My Co-op Screen
+
+actor User
+participant Company list
+participant Individual Company Modal
+participant API
+
+Company list->User:Shows user the \ncurrent company list (all companies)
+User->Company list: Clicks on a single company
+Individual Company Modal->User: Shows a modal with company information
+Individual Company Modal-->API: GET /api/companies/{companyId} \nfor the company the user clicked
+Individual Company Modal->User: Displays a loading spinner
+API-->Individual Company Modal: GET /api/companies/{companyId} \nreturns the first page of reviews
+Individual Company Modal->User: Displays all the reviews that were returned
+User->Individual Company Modal: Clicks "next page"
+Individual Company Modal-->API: GET /api/companies/{companyId} \nfor the company the user clicked
+Individual Company Modal->User: Displays a loading spinner
+API-->Individual Company Modal: GET /api/companies/{companyId} \nreturns the next page of reviews
+Individual Company Modal->User: Displays all the reviews that were returned
+User->Individual Company Modal: Clicks "previous page"
+Individual Company Modal-->API: GET /api/companies/{companyId} \nfor the company the user clicked
+Individual Company Modal->User: Displays a loading spinner
+API-->Individual Company Modal: GET /api/companies/{companyId} \nreturns the previous page of reviews
+Individual Company Modal->User: Displays all the reviews that were returned
