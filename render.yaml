@@ -19,8 +19,9 @@ projects:
               - key: NO_REPLY_EMAIL_PASSWORD
                 sync: false
 
-          - type: static
+          - type: web
             name: coapp-frontend-dev
+            runtime: static
             repo: https://github.com/Co-App-Team/frontend
             branch: develop
             buildCommand: npm run build
@@ -49,8 +50,9 @@ projects:
               - key: NO_REPLY_EMAIL_PASSWORD
                 sync: false
 
-          - type: static
+          - type: web
             name: coapp
+            runtime: static
             repo: https://github.com/Co-App-Team/frontend
             branch: main
             buildCommand: npm run build
