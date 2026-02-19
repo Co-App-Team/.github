@@ -19,7 +19,7 @@ services:
     runtime: static
     repo: https://github.com/Co-App-Team/frontend
     branch: main
-    publishPath: dist
+    staticPublishPath: dist
     buildCommand: npm run build
     envVars:
       - key: VITE_API_URL
