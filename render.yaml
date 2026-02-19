@@ -18,13 +18,13 @@ projects:
                 sync: false
               - key: NO_REPLY_EMAIL_PASSWORD
                 sync: false
-          - type: web
+
+          - type: static
             name: coapp-frontend-dev
-            runtime: static
             repo: https://github.com/Co-App-Team/frontend
             branch: develop
             buildCommand: npm run build
-            staticPublishPath: dist
+            publishPath: dist
             envVars:
               - key: VITE_API_URL
                 fromService:
@@ -49,13 +49,12 @@ projects:
               - key: NO_REPLY_EMAIL_PASSWORD
                 sync: false
 
-          - type: web
+          - type: static
             name: coapp
-            runtime: static
             repo: https://github.com/Co-App-Team/frontend
             branch: main
             buildCommand: npm run build
-            staticPublishPath: dist
+            publishPath: dist
             envVars:
               - key: VITE_API_URL
                 fromService:
