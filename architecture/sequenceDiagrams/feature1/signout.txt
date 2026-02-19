@@ -1,0 +1,11 @@
+title Sign out
+
+actor User
+participant Account management page
+participant API
+
+User->Account management page:Click "Sign out"
+Account management page-->API: GET /api/auth/logout
+Account management page<--API:/api/auth/logout OK (unset auth cookie)
+
+Account management page->User: Redirect to login page
