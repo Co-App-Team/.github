@@ -4,6 +4,8 @@ actor User
 participant Sign up page
 participant Email confirmation page
 participant API
+participant Auth Service
+database User Repository
 
 User->Sign up page:Enter first name
 User->Sign up page:Enter last name
@@ -14,7 +16,16 @@ User->Sign up page:Click "Create Account"
 Sign up page->User: Show loading spinner
 
 Sign up page-->API: POST /api/auth/register
-Sign up page<--API:/api/auth/register OK
+
+API-->Auth Service: User information
+
+Auth Service --> Auth Service: Validate
+
+Auth Service --> User Repository: Add new user
+
+
+
+Sign up page<--Auth Service:/api/auth/register OK
 
 Sign up page->User: Redirect to email confirmation
 
@@ -24,10 +35,26 @@ Email confirmation page->User: Show loading spinner
 
 Email confirmation page-->API: PATCH /api/auth/verify-email
 
-Email confirmation page<--API: /api/auth/verify-email OK
+API --> Auth Service: Email\nVerification Code
+
+Auth Service --> User Repository: Email
+
+Auth Service <-- User Repository: User model
+
+Auth Service --> Auth Service: Validate code
+
+Email confirmation page<--Auth Service: /api/auth/verify-email OK
 
 Email confirmation page-->API: POST /api/auth/login
 
-Email confirmation page<--API: /api/auth/login OK
+API --> Auth Service: Email\nPassword
+
+Auth Service --> User Repository: Email
+
+Auth Service <-- User Repository: User Model
+
+Auth Service --> Auth Service: Check password
+
+Email confirmation page<--Auth Service: /api/auth/login OK
 
 Email confirmation page->User: Redirect to home page

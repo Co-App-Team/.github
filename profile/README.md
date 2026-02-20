@@ -42,3 +42,7 @@ Documentation specific to either the front end or back end can be found in their
 ## Block Diagram
 
 See [BlockDiagram.md](../architecture/BlockDiagram.md) to view the block diagram.
+
+## Sequence Diagram
+
+See sequence diagrams for each feature [here](../architecture/sequenceDiagrams/).
