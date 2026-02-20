@@ -4,6 +4,8 @@ actor User
 participant Company list
 participant Individual Company Modal
 participant API
+participant Service
+participant MongoDB
 
 Company list->User:Shows user the \ncurrent company list (all companies)
 User->Company list: Clicks on a single company
@@ -17,7 +19,12 @@ Individual Company Modal->User: Hides the text field input
 User->Individual Company Modal: Clicks on an edit button next to \na review, that the user did write
 Individual Company Modal->User: Shows a text field input
 User->Individual Company Modal: Types in the text field input, and clicks "submit"
-Individual Company Modal-->API: PUT /api/companies/{companyId}/reviews/{reviewId} \nwith a payload of the user's text input
+Individual Company Modal-->API: PUT /api/companies/{companyId}/reviews/{reviewId} \nwith a payload of the user's text
 User<-Individual Company Modal: Shows a loading spinner
+API-->Service: Send updated review information to backend\nReviewService validates review information
+Service-->MongoDB: send details to database
+MongoDB-->MongoDB: update company review \ninformation in the database
+MongoDB-->Service: send success response
+Service-->API: send success response
 Individual Company Modal<--API: PUT /api/companies/{companyId}/reviews/{reviewId} \nresponds with success
 User<-Individual Company Modal: Replaces spinner with "success" message
