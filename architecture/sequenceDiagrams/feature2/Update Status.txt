@@ -1,19 +1,36 @@
 title Job Applications (Update Status)
 
 actor User
+participant Job Applications Page
+participant Application Form
+participant API
+participant Application Service
+participant MongoDB
 
-User->Job Applications Page:Click the application status dropdown
+User->Job Applications Page: Click "Add New Application"
 
-User->Job Applications Page:Choose a new status from the dropdown
+User -> Application Form: Enter job title, company name, \ndeadline date, and posting link
 
-Job Applications Page --> API: PUT /api/application
+User -> Application Form: Click "Submit"
 
-Job Applications Page -> User: Display loading spinner
+Application Form --> API: POST /api/application \nwith a payload of the user's text input
 
-API --> Job Applications Page:/api/application OK 
+Application Form -> User: Display loading spinner
 
-Job Applications Page -> User: Hide loading spinner
+API --> Application Service: ApplicationService validates \ninput and checks for duplicates
 
-Job Applications Page -> User: Show user their existing job applications, \n including the recently edited application \n with its updated status
+Application Service --> MongoDB: send new application details to database
 
+MongoDB --> MongoDB: store application information
 
+MongoDB --> Application Service: send success response
+
+Application Service --> API: send success response
+
+Application Form <-- API: POST /api/application CREATED
+
+Application Form -> User: Hide loading spinner
+
+User -> Job Applications Page : Redirect to main page
+
+Job Applications Page -> User: Show user their new and \n existing job applications

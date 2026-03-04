@@ -1,36 +1,36 @@
 title Job Applications (Log New Application)
 
 actor User
+participant Job Applications Page
+participant Application Form
+participant API
+participant Application Service
+participant MongoDB
 
-User->Job Applications Page:Click "Add New Application"
+User->Job Applications Page: Click "Add New Application"
 
-User -> Application Form: Enter job title
-
-User-> Application Form: Enter company name
-
-User -> Application Form: Enter deadline date
-
-User-> Application Form: Enter posting link
+User -> Application Form: Enter job title, company name, \ndeadline date, and posting link
 
 User -> Application Form: Click "Submit"
 
-
-Application Form --> API: POST /api/application
+Application Form --> API: POST /api/application \nwith a payload of the user's text input
 
 Application Form -> User: Display loading spinner
 
-API --> Application Form: /api/application CREATED
+API --> Application Service: ApplicationService validates \ninput and checks for duplicates
+
+Application Service --> MongoDB: send new application details to database
+
+MongoDB --> MongoDB: store application information
+
+MongoDB --> Application Service: send success response
+
+Application Service --> API: send success response
+
+Application Form <-- API: POST /api/application CREATED
 
 Application Form -> User: Hide loading spinner
 
-User -> Job Applications Page : Redirect to main page 
+User -> Job Applications Page : Redirect to main page
 
 Job Applications Page -> User: Show user their new and \n existing job applications
-
-
-
-
-
-
-
-
