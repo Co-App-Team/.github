@@ -1,30 +1,36 @@
 title Job Applications (Delete Entry)
 
 actor User
+participant Job Applications Page
+participant Warning Form
+participant API
+participant Application Service
+participant MongoDB
 
-User->Job Applications Page:Click the "trash" button \n beside the application \n that is to be deleted
+User->Job Applications Page: Click the "trash" button \n beside the application \n that is to be deleted
 
 Warning Form-> User: Shows a message asking the user \n to confirm deletion
 
-User -> Warning Form: Click "Confirm Delete" 
+User -> Warning Form: Click "Confirm Delete"
 
-
-Warning Form --> API: DELETE /api/application
+Warning Form --> API: DELETE /api/application/{applicationId}
 
 Warning Form -> User: Display loading spinner
 
-API --> Warning Form: /api/application OK
+API --> Application Service: ApplicationService validates \nownership and processes delete
+
+Application Service --> MongoDB: send application ID to database
+
+MongoDB --> MongoDB: delete application \nfrom the database
+
+MongoDB --> Application Service: send success response
+
+Application Service --> API: send success response
+
+Warning Form <-- API: DELETE /api/application/{applicationId} OK
 
 Warning Form -> User: Hide loading spinner
 
-User -> Job Applications Page : Redirect to main page 
+User -> Job Applications Page : Redirect to main page
 
-Job Applications Page -> User: Show user their existing job applications, \n excluding the recently deleted job application
-
-
-
-
-
-
-
-
+Job Applications Page -> User: Show user their existing job applications, \n excluding the recently deleted job application.
