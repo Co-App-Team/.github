@@ -46,3 +46,7 @@ See [BlockDiagram.md](../architecture/BlockDiagram.md) to view the block diagram
 ## Sequence Diagram
 
 See sequence diagrams for each feature [here](../architecture/sequenceDiagrams/).
+
+## Releases
+
+**Our sprint 2 release document can be found [here](../docs/Sprint2Release.md).**
