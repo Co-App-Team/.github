@@ -13,6 +13,8 @@ services:
         sync: false
       - key: NO_REPLY_EMAIL_PASSWORD
         sync: false
+      - key: GOOGLE_GENAI_API_KEY
+        sync: false
 
   - type: web
     name: coapp-suite
