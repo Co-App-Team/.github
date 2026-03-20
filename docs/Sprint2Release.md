@@ -20,7 +20,6 @@ We provided detailed sequence diagrams for each features [here](../architecture/
 
 - [Sequence diagrams for Feature 2.](../architecture/sequenceDiagrams/feature2/SequenceDiagram.md)
 
-
 - [Sequence diagrams for Feature 4.](../architecture/sequenceDiagrams/feature4/SequenceDiagram.md)
 
 

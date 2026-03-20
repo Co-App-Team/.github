@@ -1,0 +1,29 @@
+title Resume Advisor
+
+participant Client
+participant Controller
+participant GenAIResumerAdvisorService
+database GenAIUsageRepository
+participant Google Gemini
+
+
+
+// POST api/resume-ai-advisor/
+
+Client-->Controller: POST api/resume-ai-advisor/
+
+Controller --> GenAIResumerAdvisorService: User ID\nPrompt
+
+GenAIResumerAdvisorService --> GenAIUsageRepository: Check and increment\nusage by 1 
+
+GenAIResumerAdvisorService --> GenAIResumerAdvisorService: is over limit?
+
+
+GenAIResumerAdvisorService --> Google Gemini: Instruction\nContext\nUser's Prompt
+
+GenAIResumerAdvisorService <-- Google Gemini: Response
+
+
+Client <-- GenAIResumerAdvisorService: Response from GenAI
+
+
