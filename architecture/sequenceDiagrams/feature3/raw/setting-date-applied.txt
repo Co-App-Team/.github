@@ -1,0 +1,20 @@
+title Sorting Applications by Date Applied
+
+actor User
+participant Job Application Screen 
+participant Application status dropdown
+participant API
+participant Backend
+
+User->Application status dropdown: Changes status from "Not Applied" to "Applied" for a \njob whose deadline date has passed
+Application status dropdown-->API: PUT /api/application with new \nstatus="APPLIED"
+API-->Job Application Screen: Responds with an error
+Job Application Screen->User: Displays error that user can't apply as \ndue date has passed
+
+User->Application status dropdown: Changes status from "Not Applied" to "Applied" for a \njob whose deadline date has not yet passed
+Application status dropdown-->API: PUT /api/application with new \nstatus="APPLIED"
+API-->Backend: Updates application's "dateApplied" \nfield to today's date
+
+
+
+

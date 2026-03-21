@@ -1,0 +1,43 @@
+title Sorting Applications by Date Applied
+
+actor User
+participant "Sort By Applied On" Button
+participant Application list
+participant API
+
+Application list->User:Shows user the current application list (all applicaions)
+
+User->"Sort By Applied On" Button: Clicks calendar button
+User<-"Sort By Applied On" Button: Calendar button becomes filled in. \nArrow button becomes enabled
+"Sort By Applied On" Button-->Application list: Prompts a refetch of \napplications that have \nits "date applied" \nfield set
+Application list-->API: GET /api/application with sortBy="dateApplied" \nand sortOrder="desc" params
+Application list->User: Shows loading spinner
+Application list<--API: GET /api/application responds only with the \napplications with their date applied fields set, \nin descending order of date
+Application list->User: Shows the returned applications
+
+User->"Sort By Applied On" Button: Clicks the arrow button
+User<-"Sort By Applied On" Button: Flips the arrow so that it's pointing up
+"Sort By Applied On" Button-->Application list: Prompts a refetch of \napplications that have \nits "date applied" \nfield set
+Application list-->API: GET /api/application with sortBy="dateApplied" \nand sortOrder="asc" params
+Application list->User: Shows loading spinner
+Application list<--API: GET /api/application responds only with the \napplications with their date applied fields set, \nin ascending order of date
+Application list->User: Shows the returned applications
+
+User->"Sort By Applied On" Button: Clicks the arrow button
+User<-"Sort By Applied On" Button: Flips the arrow so that it's pointing down
+"Sort By Applied On" Button-->Application list: Prompts a refetch of \napplications that have \nits "date applied" \nfield set
+Application list-->API: GET /api/application with sortBy="dateApplied" \nand sortOrder="desc" params
+Application list->User: Shows loading spinner
+Application list<--API: GET /api/application responds only with the \napplications with their date applied fields set, \nin descending order of date
+Application list->User: Shows the returned applications
+
+User->"Sort By Applied On" Button: Clicks calendar button
+User<-"Sort By Applied On" Button: Calendar button becomes unfilled. \nArrow button becomes disabled
+"Sort By Applied On" Button-->Application list: Prompts a refetch of \napplications
+Application list-->API: GET /api/application without sortBy \nand sortOrder params
+Application list->User: Shows loading spinner
+Application list<--API: GET /api/application responds only with all \napplications
+Application list->User: Shows the returned applications
+
+
+

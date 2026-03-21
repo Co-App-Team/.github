@@ -1,0 +1,35 @@
+title Filtering Applications By Status
+
+actor User
+participant Status Filter Selection
+participant Application list
+participant API
+
+Application list->User:Shows user the current application list (all applicaions)
+User->Status Filter Selection: Selects one or more status checkboxes
+Status Filter Selection-->Application list: Prompts for an update to the application list \nwith the selected statuses.
+Application list-->API: GET /api/application with STATUS="..." param
+Application list->User: Shows loading spinner
+Application list<--API: GET /api/application responds only with the \napplications with the corresponding statuses
+Application list->User: Shows the returned applications
+
+User->Status Filter Selection: Unselects one or more status checkboxes
+Status Filter Selection-->Application list: Prompts for an update to the application list \nwith the selected statuses.
+Application list-->API: GET /api/application with STATUS="..." param
+Application list->User: Shows loading spinner
+Application list<--API: GET /api/application responds only with the \napplications with the corresponding statuses
+Application list->User: Shows the returned applications
+
+User->Status Filter Selection: Selects one or more status checkboxes
+Status Filter Selection-->Application list: Prompts for an update to the application list \nwith the selected statuses.
+Application list-->API: GET /api/application with STATUS="..." param
+Application list->User: Shows loading spinner
+Application list<--API: GET /api/application responds only with the \napplications with the corresponding statuses
+Application list->User: Shows the returned applications
+
+User->Status Filter Selection: Clicks "reset"
+Status Filter Selection-->Application list: Prompts for an update to the application list \nwith no statuses
+Application list-->API: GET /api/application with out the STATUS="..." param
+Application list->User: Shows loading spinner
+Application list<--API: GET /api/application responds only with all applications
+Application list->User:Shows user the current application list (all applicaions)
