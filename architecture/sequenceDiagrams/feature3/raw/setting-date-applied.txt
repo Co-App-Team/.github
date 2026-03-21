@@ -1,4 +1,4 @@
-title Sorting Applications by Date Applied
+title Setting Status of a Job Application to "Applied"
 
 actor User
 participant Job Application Screen 
