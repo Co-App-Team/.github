@@ -4,17 +4,24 @@ actor User
 participant Job Application Screen 
 participant Application status dropdown
 participant API
+participant Service
+participant MongoDB
+
 participant Backend
 
 User->Application status dropdown: Changes status from "Not Applied" to "Applied" for a \njob whose deadline date has passed
 Application status dropdown-->API: PUT /api/application with new \nstatus="APPLIED"
+API-->Service: Send update request information to backend
+Service-->API: service detects invalid request\nsends error response back
 API-->Job Application Screen: Responds with an error
 Job Application Screen->User: Displays error that user can't apply as \ndue date has passed
 
 User->Application status dropdown: Changes status from "Not Applied" to "Applied" for a \njob whose deadline date has not yet passed
 Application status dropdown-->API: PUT /api/application with new \nstatus="APPLIED"
-API-->Backend: Updates application's "dateApplied" \nfield to today's date
-
-
+API-->Service: Send update request information to backend\nwith "dateApplied" as todays date
+Service-->MongoDB: Send update details to database
+MongoDB-->MongoDB: update application \nstatus in the database\nwith "dateApplied" as \ntodays date
+MongoDB-->Service: send success response
+Service-->API: send success response
 
 

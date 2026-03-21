@@ -4,9 +4,15 @@ actor User
 participant Search bar
 participant Application list
 participant API
+participant Service
+participant MongoDB
 
 Application list-->API: GET /api/application
 Application list->User:Shows user loading spinner
+API-->Service: Send request details to backend\nApplication service processes request
+Service-->MongoDB: send request to database
+MongoDB-->Service: send success response with list \nof all of the users applications
+Service-->API: send success response with list of \nall of usersapplications
 API-->Application list: GET /api/application responds\nwith list of all of a user's applications.
 
 Application list->User:Shows user the current application list (all applicaions)

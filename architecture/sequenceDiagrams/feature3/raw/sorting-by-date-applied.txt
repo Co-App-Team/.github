@@ -4,6 +4,8 @@ actor User
 participant "Sort By Applied On" Button
 participant Application list
 participant API
+participant Service
+participant MongoDB
 
 Application list->User:Shows user the current application list (all applicaions)
 
@@ -12,6 +14,10 @@ User<-"Sort By Applied On" Button: Calendar button becomes filled in. \nArrow bu
 "Sort By Applied On" Button-->Application list: Prompts a refetch of \napplications that have \nits "date applied" \nfield set
 Application list-->API: GET /api/application with sortBy="dateApplied" \nand sortOrder="desc" params
 Application list->User: Shows loading spinner
+API-->Service: send request details to backend\nwith sorting information
+Service-->MongoDB: send request with sorting and\n filtering information to database
+MongoDB-->Service: send success response \nwith sorted application data
+Service-->API: send success response with sorted \nand filtered application data
 Application list<--API: GET /api/application responds only with the \napplications with their date applied fields set, \nin descending order of date
 Application list->User: Shows the returned applications
 
@@ -20,6 +26,10 @@ User<-"Sort By Applied On" Button: Flips the arrow so that it's pointing up
 "Sort By Applied On" Button-->Application list: Prompts a refetch of \napplications that have \nits "date applied" \nfield set
 Application list-->API: GET /api/application with sortBy="dateApplied" \nand sortOrder="asc" params
 Application list->User: Shows loading spinner
+API-->Service: send request details to backend\nwith sorting information
+Service-->MongoDB: send request with sorting and\n filtering information to database
+MongoDB-->Service: send success response \nwith sorted application data
+Service-->API: send success response with sorted \nand filtered application data
 Application list<--API: GET /api/application responds only with the \napplications with their date applied fields set, \nin ascending order of date
 Application list->User: Shows the returned applications
 
@@ -28,6 +38,10 @@ User<-"Sort By Applied On" Button: Flips the arrow so that it's pointing down
 "Sort By Applied On" Button-->Application list: Prompts a refetch of \napplications that have \nits "date applied" \nfield set
 Application list-->API: GET /api/application with sortBy="dateApplied" \nand sortOrder="desc" params
 Application list->User: Shows loading spinner
+API-->Service: send request details to backend\nwith sorting information
+Service-->MongoDB: send request with sorting and\n filtering information to database
+MongoDB-->Service: send success response \nwith sorted application data
+Service-->API: send success response with sorted \nand filtered application data
 Application list<--API: GET /api/application responds only with the \napplications with their date applied fields set, \nin descending order of date
 Application list->User: Shows the returned applications
 
@@ -36,8 +50,70 @@ User<-"Sort By Applied On" Button: Calendar button becomes unfilled. \nArrow but
 "Sort By Applied On" Button-->Application list: Prompts a refetch of \napplications
 Application list-->API: GET /api/application without sortBy \nand sortOrder params
 Application list->User: Shows loading spinner
+API-->Service: send request details to backend\nspecifying no sorting
+Service-->MongoDB: send request for data to database\nwith no sorting or filtering
+MongoDB-->Service: send success response with \nall application data for the user
+Service-->API: send success response with \nall application data for the user
 Application list<--API: GET /api/application responds only with all \napplications
 Application list->User: Shows the returned applications
 
 
 
+title Sorting Applications by Date Applied
+
+actor User
+participant "Sort By Applied On" Button
+participant Application list
+participant API
+participant Service
+participant MongoDB
+
+Application list->User:Shows user the current application list (all applicaions)
+
+User->"Sort By Applied On" Button: Clicks calendar button
+User<-"Sort By Applied On" Button: Calendar button becomes filled in. \nArrow button becomes enabled
+"Sort By Applied On" Button-->Application list: Prompts a refetch of \napplications that have \nits "date applied" \nfield set
+Application list-->API: GET /api/application with sortBy="dateApplied" \nand sortOrder="desc" params
+Application list->User: Shows loading spinner
+API-->Service: send request details to backend\nwith sorting information
+Service-->MongoDB: send request with sorting and\n filtering information to database
+MongoDB-->Service: send success response \nwith sorted application data
+Service-->API: send success response with sorted \nand filtered application data
+Application list<--API: GET /api/application responds only with the \napplications with their date applied fields set, \nin descending order of date
+Application list->User: Shows the returned applications
+
+User->"Sort By Applied On" Button: Clicks the arrow button
+User<-"Sort By Applied On" Button: Flips the arrow so that it's pointing up
+"Sort By Applied On" Button-->Application list: Prompts a refetch of \napplications that have \nits "date applied" \nfield set
+Application list-->API: GET /api/application with sortBy="dateApplied" \nand sortOrder="asc" params
+Application list->User: Shows loading spinner
+API-->Service: send request details to backend\nwith sorting information
+Service-->MongoDB: send request with sorting and\n filtering information to database
+MongoDB-->Service: send success response \nwith sorted application data
+Service-->API: send success response with sorted \nand filtered application data
+Application list<--API: GET /api/application responds only with the \napplications with their date applied fields set, \nin ascending order of date
+Application list->User: Shows the returned applications
+
+User->"Sort By Applied On" Button: Clicks the arrow button
+User<-"Sort By Applied On" Button: Flips the arrow so that it's pointing down
+"Sort By Applied On" Button-->Application list: Prompts a refetch of \napplications that have \nits "date applied" \nfield set
+Application list-->API: GET /api/application with sortBy="dateApplied" \nand sortOrder="desc" params
+Application list->User: Shows loading spinner
+API-->Service: send request details to backend\nwith sorting information
+Service-->MongoDB: send request with sorting and\n filtering information to database
+MongoDB-->Service: send success response \nwith sorted application data
+Service-->API: send success response with sorted \nand filtered application data
+Application list<--API: GET /api/application responds only with the \napplications with their date applied fields set, \nin descending order of date
+Application list->User: Shows the returned applications
+
+User->"Sort By Applied On" Button: Clicks calendar button
+User<-"Sort By Applied On" Button: Calendar button becomes unfilled. \nArrow button becomes disabled
+"Sort By Applied On" Button-->Application list: Prompts a refetch of \napplications
+Application list-->API: GET /api/application without sortBy \nand sortOrder params
+Application list->User: Shows loading spinner
+API-->Service: send request details to backend\nspecifying no sorting
+Service-->MongoDB: send request for data to database\nwith no sorting or filtering
+MongoDB-->Service: send success response with \nall application data for the user
+Service-->API: send success response with \nall application data for the user
+Application list<--API: GET /api/application responds only with all \napplications
+Application list->User: Shows the returned applications
