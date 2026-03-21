@@ -1,0 +1,34 @@
+title Searching for Applications
+
+actor User
+participant Search bar
+participant Application list
+participant API
+participant Service
+participant MongoDB
+
+Application list-->API: GET /api/application
+Application list->User:Shows user loading spinner
+API-->Service: Send request details to backend\nApplication service processes request
+Service-->MongoDB: send request to database
+MongoDB-->Service: send success response with list \nof all of the users applications
+Service-->API: send success response with list of \nall of usersapplications
+API-->Application list: GET /api/application responds\nwith list of all of a user's applications.
+
+Application list->User:Shows user the current application list (all applicaions)
+User->Search bar:Clicks on search bar
+User->Search bar:Types a character in search bar
+Search bar->Application list:Updates the list to show\napplications that start with \n the text in the search bar
+Application list->User:Shows user the current application list \n(applications that match current text in search bar)
+
+User->Search bar:Types a character in search bar
+Search bar->Application list:Updates the list to show\napplications that start with\nthe text in the search bar
+Application list->User:Shows user the current application list \n(companies that match current text in search bar)
+
+User->Search bar:Deletes a character in search bar
+Search bar->Application list:Updates the list to show\n applications that start with \n the text in the search bar
+Application list->User:Shows user the current application list \n(applications that match current text in search bar)
+
+User->Search bar:Deletes a character in search bar
+Search bar->Application list:Updates the list to show\napplications that start with\nthe text in the search bar.\n\nSince the search bar is now\nempty, then all applications\nare shown to the user.
+Application list->User:Shows user the current application list \n(all applications)
