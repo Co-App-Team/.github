@@ -1,0 +1,38 @@
+title Resume Advisor
+
+participant User
+participant Resume Workshop Page
+participant Controller
+participant GenAIResumerAdvisorService
+database GenAIUsageRepository
+participant Google Gemini
+
+User -> Resume Workshop Page: Enters a prompt for chatbot
+
+User -> Resume Workshop Page: Selects an application for context
+
+User -> Resume Workshop Page: Selects a goal
+
+User -> Resume Workshop Page: Clicks "Generate Feedback"
+
+Resume Workshop Page -> Resume Workshop Page: Create prompt from goal and prompt
+
+Resume Workshop Page-->Controller: POST api/resume-ai-advisor/
+
+Controller --> GenAIResumerAdvisorService: User ID\nPrompt
+
+GenAIResumerAdvisorService --> GenAIUsageRepository: Check and increment\nusage by 1 
+
+GenAIResumerAdvisorService --> GenAIResumerAdvisorService: is over limit?
+
+
+GenAIResumerAdvisorService --> Google Gemini: Instruction\nContext\nUser's Prompt
+
+GenAIResumerAdvisorService <-- Google Gemini: Response
+
+
+Resume Workshop Page <-- GenAIResumerAdvisorService: Response from GenAI
+
+Resume Workshop Page -> User: Show response from GenAI
+
+Resume Workshop Page -> User: Show remaining GenAI quota

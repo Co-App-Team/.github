@@ -1,0 +1,71 @@
+title Create User Experience
+
+participant User
+participant Account Page
+participant Controller
+participant User Service
+database User Experience Repository
+
+
+Account Page -> User: Show loading spinner
+
+// GET api/user/experience
+
+Account Page-->Controller: GET api/user/experience
+
+Controller --> User Service: User ID
+
+User Service --> User Experience Repository: Fecth all experiences\nof the user.
+
+User Service <-- User Experience Repository: Experiences
+
+Account Page <-- User Service: Experiences List
+
+// Modal interactions
+
+Account Page -> User: Show list of experiences
+
+User -> Account Page: Click "Add new experience"
+
+Account Page -> User: Show creation modal
+
+User -> Account Page: Fill out creation modal
+
+User -> Account Page: Click "Submit"
+
+Account Page -> User: Show loading spinner
+
+
+// POST api/user/experience
+
+Account Page-->Controller: POST api/user/experience
+
+Controller --> User Service: User ID\nNew experience
+
+User Service --> User Experience Repository: Create a new\nexperience
+
+User Service <-- User Experience Repository: new experience
+
+Account Page <-- User Service: New experience ID
+
+// Modal interactions
+
+Account Page -> User: Hide modal 
+
+Account Page -> User: Show loading spinner 
+
+// Re-fetch experiences
+
+Account Page-->Controller: GET api/user/experience
+
+Controller --> User Service: User ID
+
+User Service --> User Experience Repository: Fecth all experiences\nof the user.
+
+User Service <-- User Experience Repository: Experiences
+
+Account Page <-- User Service: Experiences List
+
+// Show new experiences list
+
+Account Page -> User: Show updated list of experiences

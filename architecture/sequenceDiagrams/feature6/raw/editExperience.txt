@@ -1,0 +1,70 @@
+title Edit User Experience
+
+participant User
+participant Account Page
+participant Controller
+participant User Service
+database User Experience Repository
+
+
+Account Page -> User: Show loading spinner
+
+// GET api/user/experience
+
+Account Page-->Controller: GET api/user/experience
+
+Controller --> User Service: User ID
+
+User Service --> User Experience Repository: Fecth all experiences\nof the user.
+
+User Service <-- User Experience Repository: Experiences
+
+Account Page <-- User Service: Experiences List
+
+// Modal interactions
+
+Account Page -> User: Show list of experiences
+
+User -> Account Page: Click "edit" on an experience
+
+Account Page -> User: Show edit modal
+
+User -> Account Page: Perform edits on modal
+
+User -> Account Page: Click "Submit"
+
+Account Page -> User: Show loading spinner
+
+// PATCH api/user/experience/{experienceId}
+
+Account Page-->Controller: PATCH api/user/experience/{experienceId}
+
+Controller --> User Service: User ID\nExperience ID\nUpdate experience
+
+User Service --> User Experience Repository: Update existing nexperience
+
+User Service <-- User Experience Repository: Updated experience
+
+Account Page <-- User Service: OK
+
+// Modal interactions
+
+Account Page -> User: Close modal
+
+Account Page -> User: Show loading spinner
+
+// Re-fetch experiences
+
+Account Page-->Controller: GET api/user/experience
+
+Controller --> User Service: User ID
+
+User Service --> User Experience Repository: Fecth all experiences\nof the user.
+
+User Service <-- User Experience Repository: Experiences
+
+Account Page <-- User Service: Experiences List
+
+// Show new experiences list
+
+Account Page -> User: Show updated list of experiences
