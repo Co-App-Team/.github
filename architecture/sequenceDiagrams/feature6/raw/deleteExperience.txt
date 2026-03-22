@@ -1,0 +1,62 @@
+title Delete User Experience
+
+participant User
+participant Account Page
+participant Controller
+participant User Service
+database User Experience Repository
+
+
+Account Page -> User: Show loading spinner
+
+// GET api/user/experience
+
+Account Page-->Controller: GET api/user/experience
+
+Controller --> User Service: User ID
+
+User Service --> User Experience Repository: Fecth all experiences\nof the user.
+
+User Service <-- User Experience Repository: Experiences
+
+Account Page <-- User Service: Experiences List
+
+// Modal interactions
+
+Account Page -> User: Show list of experiences
+
+User -> Account Page: Click "Delete" on an experience
+
+Account Page -> User: Show loading spinner
+
+
+// DELETE api/user/experience/{experienceId}
+
+Account Page-->Controller: DELETE api/user/experience/{experienceId}
+
+Controller --> User Service: User ID\nExperience ID\nUpdate experience
+
+User Service --> User Experience Repository: Delete existing nexperience
+
+Account Page <-- User Service: OK
+
+// Re-fetch experiences
+
+Account Page-->Controller: GET api/user/experience
+
+Controller --> User Service: User ID
+
+User Service --> User Experience Repository: Fecth all experiences\nof the user.
+
+User Service <-- User Experience Repository: Experiences
+
+Account Page <-- User Service: Experiences List
+
+// Show new experiences list
+
+Account Page -> User: Show updated list of experiences
+
+
+
+
+
