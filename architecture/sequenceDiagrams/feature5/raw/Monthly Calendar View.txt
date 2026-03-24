@@ -1,0 +1,28 @@
+title Monthly Calendar View
+
+actor User
+participant Interview Calendar Page
+participant API
+
+Interview Calendar Page-->API: GET /api/application/interviews
+
+API-->Interview Calendar Page: /api/application/interviews OK
+
+Interview Calendar Page-->API: For each job interview, \n GET /api/company/{companyId} \nto get the company name that the interview is for
+
+API-->Interview Calendar Page: /api/company/{companyId} OK
+
+User<-Interview Calendar Page: Display all the job interviews for the current month
+
+User->Interview Calendar Page: Click the ' < ' button located at the top left corner of the page 
+
+Interview Calendar Page->User: Display all the job interviews for the previous month
+
+User->Interview Calendar Page: Click the 'Today' button located at the top left corner of the page
+
+Interview Calendar Page->User: Display all the job interviews for the current month
+
+User->Interview Calendar Page: Click the ' > ' button located at the top left corner of the page
+
+Interview Calendar Page->User: Display all the job interviews for the next month
+

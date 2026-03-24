@@ -1,0 +1,19 @@
+title Quick Navigation
+
+actor User
+participant Interview Calendar Page
+participant Interview Details Modal
+
+User<-Interview Calendar Page: Display all the job interviews for the current month
+
+User->Interview Calendar Page: Click on any of the job interview for the month
+
+Interview Calendar Page->Interview Details Modal: Send selected job interview to display
+
+Interview Details Modal->User: Display the job application (job title and company) the interview is for \nand the interview's date and time 
+
+User->Interview Details Modal: Click 'Done' 
+
+Interview Details Modal->User: Hide job interview details
+
+User->Interview Calendar Page: Redirect to Interview Calendar page
