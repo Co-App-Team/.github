@@ -50,3 +50,5 @@ See sequence diagrams for each feature [here](../architecture/sequenceDiagrams/)
 ## Releases
 
 **Our sprint 2 release document can be found [here](../docs/Sprint2Release.md).**
+
+**Our sprint 3 release document can be found [here](../docs/Sprint3Release.md).**
