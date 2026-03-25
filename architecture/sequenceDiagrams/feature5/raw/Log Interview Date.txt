@@ -1,0 +1,36 @@
+title Log Interview Date
+
+actor User
+participant Interview Calendar Page
+participant Interview Form
+participant API
+
+User->Interview Calendar Page: Click the "New Job Interview" button \nlocated at the top right corner of the page
+
+Interview Calendar Page-->API: GET /api/application where status is either \n NOT APPLIED, APPLIED, or INTERVIEW SCHEDULED
+
+API-->Interview Calendar Page: /api/application OK
+
+User -> Interview Form: Choose a job application to set an interview for from the dropdown menu
+
+Interview Form-->API: GET /api/company/{companyId}
+
+API-->Interview Form: /api/company/{companyId} OK
+
+Interview Form->User: Display the current job application selected in the format 'job title @ company'
+
+User -> Interview Form: Select a date and time for the interview
+
+User -> Interview Form: Click "Submit"
+
+Interview Form -> User: Display loading spinner in the "Submit" button \n and disable the form for further editing
+
+Interview Form --> API: PUT /api/application/{applicationId}
+
+Interview Form <-- API: /api/application/{applicationId} OK
+
+Interview Form -> User: Hide interview form
+
+User -> Interview Calendar Page : Redirect to Interview Calendar Page
+
+Interview Calendar Page -> User: Show user their new and \n existing job interviews for the selected month
