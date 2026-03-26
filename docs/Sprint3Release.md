@@ -81,3 +81,8 @@ We track our features and user stories on [.github repository](https://github.co
 
 Bug and dev tasks for each feature is tracked independently on [frontend repo](https://github.com/Co-App-Team/frontend/issues) and [backend repo](https://github.com/Co-App-Team/backend/issues)
 
+### Run our application locally
+
+To build and run our application locally, please follow the instructions:
+- For frontend: [CONTRIBUTING.md](https://github.com/Co-App-Team/frontend?tab=contributing-ov-file#setup-instructions)
+- For backend: [CONTRIBUTING.md](https://github.com/Co-App-Team/backend?tab=contributing-ov-file#setup-instructions)
