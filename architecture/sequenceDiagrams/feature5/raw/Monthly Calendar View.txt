@@ -3,8 +3,18 @@ title Monthly Calendar View
 actor User
 participant Interview Calendar Page
 participant API
+participant Application Service
+participant MongoDB
 
 Interview Calendar Page-->API: GET /api/application/interviews
+
+API --> Application Service: getInterviewApplications(userId, startDate, endDate)
+
+Application Service --> MongoDB: Query applications where \nuserId matches and interviewDateTime exists
+
+MongoDB --> Application Service: Return application documents
+
+Application Service --> API: Return list of ApplicationResponse DTOs
 
 API-->Interview Calendar Page: /api/application/interviews OK
 
@@ -14,7 +24,7 @@ API-->Interview Calendar Page: /api/company/{companyId} OK
 
 User<-Interview Calendar Page: Display all the job interviews for the current month
 
-User->Interview Calendar Page: Click the ' < ' button located at the top left corner of the page 
+User->Interview Calendar Page: Click the ' < ' button located at the top left corner of the page
 
 Interview Calendar Page->User: Display all the job interviews for the previous month
 
@@ -25,4 +35,3 @@ Interview Calendar Page->User: Display all the job interviews for the current mo
 User->Interview Calendar Page: Click the ' > ' button located at the top left corner of the page
 
 Interview Calendar Page->User: Display all the job interviews for the next month
-

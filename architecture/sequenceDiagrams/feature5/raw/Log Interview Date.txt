@@ -4,10 +4,20 @@ actor User
 participant Interview Calendar Page
 participant Interview Form
 participant API
+participant Application Service
+participant MongoDB
 
 User->Interview Calendar Page: Click the "New Job Interview" button \nlocated at the top right corner of the page
 
 Interview Calendar Page-->API: GET /api/application where status is either \n NOT APPLIED, APPLIED, or INTERVIEW SCHEDULED
+
+API --> Application Service: getFilteredApplications(userId, status, ...)
+
+Application Service --> MongoDB: Query applications collection \nwith status and userId filter
+
+MongoDB --> Application Service: Return matching application documents
+
+Application Service --> API: Return list of ApplicationResponse DTOs
 
 API-->Interview Calendar Page: /api/application OK
 
@@ -25,7 +35,21 @@ User -> Interview Form: Click "Submit"
 
 Interview Form -> User: Display loading spinner in the "Submit" button \n and disable the form for further editing
 
-Interview Form --> API: PUT /api/application/{applicationId}
+Interview Form --> API: PUT /api/application/{applicationId} \nwith interviewDateTime in payload
+
+API --> Application Service: updateApplication(userId, applicationId, ...)
+
+Application Service --> MongoDB: findById(applicationId)
+
+MongoDB --> Application Service: Return ApplicationModel
+
+Application Service --> Application Service: Validate ownership (userId match) \nand update interviewDateTime
+
+Application Service --> MongoDB: save(updatedApplication)
+
+MongoDB --> Application Service: Return saved document
+
+Application Service --> API: Return ApplicationResponse
 
 Interview Form <-- API: /api/application/{applicationId} OK
 
