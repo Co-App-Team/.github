@@ -1,4 +1,4 @@
-# Sprint 3 Release
+# Sprint 4 Release
 
 In this sprint we release:
 - Load test
