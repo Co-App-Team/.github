@@ -58,6 +58,8 @@ After the workflows run successfully, the `Docker` images are built and pushed t
 
 Our load test can be found [here](https://github.com/Co-App-Team/backend/blob/main/src/test/java/com/backend/coapp/_performance/loadtest.js). For further description about our load tests and the report can be found in our [Testing plan](../docs/Testing%20Plan.pdf).
 
+To run load tests (and other tests in the backend), please see the instruction in [CONTRIBUTING.md](https://github.com/Co-App-Team/backend?tab=contributing-ov-file#testing)
+
 
 ### Run our application locally
 
