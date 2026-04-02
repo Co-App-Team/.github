@@ -34,6 +34,13 @@ Detailed information about our package structure can be found as follows:
 1. Backend: https://github.com/Co-App-Team/backend/blob/main/docs/ARCHITECTURE.md
 2. Frontend: https://github.com/Co-App-Team/frontend/blob/main/docs/ARCHITECTURE.md
 
+### Coding style
+
+Information about the coding style that we adopt can be found:
+1. Backend: https://github.com/Co-App-Team/backend?tab=contributing-ov-file#coding-standard
+2. Frontend: https://github.com/Co-App-Team/backend?tab=contributing-ov-file#coding-standard
+
+
 ### CI pipeline
 
 Our CI pipelines are triggered for every push/commit/PR to main and development branches. You can find CI pipeline for [backend](https://github.com/Co-App-Team/backend/tree/main/.github/workflows) and [frontend](https://github.com/Co-App-Team/frontend/tree/main/.github/workflows)
@@ -60,6 +67,18 @@ Our load test can be found [here](https://github.com/Co-App-Team/backend/blob/ma
 
 To run load tests (and other tests in the backend), please see the instruction in [CONTRIBUTING.md](https://github.com/Co-App-Team/backend?tab=contributing-ov-file#testing)
 
+### Security Scanner
+
+We adopt `Sonarqube` as security scanner, which will automatically scan every new PR to default branch (`development`). 
+
+To see the scanning status of our project, please checkout [SonarQube](https://sonarcloud.io/organizations/co-app-team/projects).
+
+Since we set up `Sonarqube` at Sprint 3, so we have been continously fixing any new issues raised by `Sonarqube` in every PR to default branch.
+
+For your reference, we also spent time to fixed code smells found by `Sonarqube` in the following PRs:
+- https://github.com/Co-App-Team/backend/pull/176
+- https://github.com/Co-App-Team/backend/pull/177
+- https://github.com/Co-App-Team/backend/pull/174
 
 ### Run our application locally
 
